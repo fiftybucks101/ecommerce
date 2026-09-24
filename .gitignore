@@ -20,4 +20,4 @@ venv/
 .DS_Store
 Thumbs.db
 
-abc
+backend/backend.egg-info
