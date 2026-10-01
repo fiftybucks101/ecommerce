@@ -21,7 +21,7 @@ class Category(Base):
     )
 
     name: Mapped[str] = mapped_column(
-        string(100),
+        String(100),
         unique=True,
         nullable=False
     )
