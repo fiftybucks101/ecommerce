@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.products.routers import router as product_router
+from app.users.routers import router as user_router
 
 app = FastAPI(
     title="E-Commerce API",
@@ -29,3 +30,4 @@ def health_check():
     }
 
 app.include_router(product_router)
+app.include_router(user_router)
