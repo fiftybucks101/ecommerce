@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 1. Navigation Bar -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <span class="store-icon">🏬</span>
+            <span class="store-title">E-Commerce Store</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#" class="nav-link active">Products</a>
+            <a href="#" class="nav-link admin-pill">Admin</a>
+        </nav>
+
+        <div class="nav-user">
+            <span class="user-info">👤 Welcome, User!</span>
+            <button id="cartBtn" class="btn btn-outline">Cart (0)</button>
+            <button id="loginBtn" class="btn btn-outline">Login</button>
+        </div>
+    </header>
+
+    <!-- 2. Hero Banner -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <h1>Welcome to Our Store!</h1>
+            <p>Discover our latest products and collections.</p>
+            <a href="#products-section" class="btn btn-primary shop-now-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- 3. Main Content: Sidebar + Products -->
+    <div class="container" id="products-section">
+        <div class="layout-wrapper">
+
+            <!-- Left Sidebar: Filters -->
+            <aside class="sidebar">
+                
+                <!-- Search Box -->
+                <div class="filter-group">
+                    <h3>Search Products</h3>
+                    <form id="searchForm" class="search-form">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search products..." 
+                            autocomplete="off"
+                        >
+                        <button type="submit" id="searchBtn" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="filter-group">
+                    <h3>Filter by Category</h3>
+                    <div class="category-options">
+                        <label class="category-label">
+                            <input type="radio" name="categoryFilter" value="" checked>
+                            <span>All Products</span>
+                        </label>
+                        <label class="category-label">
+                            <input type="radio" name="categoryFilter" value="1">
+                            <span>Electronics</span>
+                        </label>
+                        <label class="category-label">
+                            <input type="radio" name="categoryFilter" value="2">
+                            <span>Clothing</span>
+                        </label>
+                    </div>
+
+                    <button type="button" id="clearFiltersBtn" class="btn btn-secondary">
+                        Clear Filters
+                    </button>
+                </div>
+
+            </aside>
+
+            <!-- Right Content: Products Grid -->
+            <main class="products-section">
+                <div class="products-header">
+                    <h2>Featured Products</h2>
+                    <span id="productCount" class="product-count"></span>
+                </div>
+
+                <!-- Dynamic Products Container (populated by app.js) -->
+                <div id="productsGrid" class="products-grid">
+                    <!-- Product cards will be rendered here -->
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="pagination">
+                    <button id="prevBtn" class="btn btn-page" disabled>Previous</button>
+                    <span id="pageIndicator" class="page-indicator">Page 1</span>
+                    <button id="nextBtn" class="btn btn-page">Next</button>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- 4. Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <span>•</span>
+            <a href="#">Contact</a>
+            <span>•</span>
+            <a href="#">Privacy Policy</a>
+        </div>
+        <p class="copyright">Copyright &copy; E-Commerce Store</p>
+    </footer>
+
+    <!-- Frontend Logic -->
+    <script src="js/app.js?v=2"></script>
+</body>
+</html>

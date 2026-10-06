@@ -1,13 +1,15 @@
 from fastapi import APIRouter, Depends, Query, status
 from sqlalchemy.orm import Session
 
-from app.db.session import get_db 
+from app.db.sessions import get_db 
 from app.products.schemas import (
     ProductCreate,
     ProductResponse,
     ProductUpdate,
+    CategoryCreate,
+    CategoryResponse
 )
-from app.products.service import product_service
+from app.products.service import product_service, category_service
 
 
 router = APIRouter(
@@ -124,4 +126,17 @@ def delete_product(
 
     return None
 
+@router.post(
+    "/create_category",
+    response_model=CategoryResponse,
+    status_code=status.HTTP_201_CREATED
+)
+def create_category(
+    category_data: CategoryCreate,
+    db: Session = Depends(get_db)
+):
 
+    return category_service.create_category(
+        db,
+        category_data
+    )

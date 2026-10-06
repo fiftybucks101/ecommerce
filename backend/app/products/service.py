@@ -3,8 +3,8 @@ from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
 from app.products.models import Product
-from app.products.repository import product_repository
-from app.products.schemas import ProductCreate, ProductUpdate
+from app.products.repository import product_repository, category_repository
+from app.products.schemas import ProductCreate, ProductUpdate, CategoryCreate
 
 
 class ProductService:
@@ -44,7 +44,7 @@ class ProductService:
         db: Session,
         page: int = 1,
         limit: int = 20,
-        serach: str | None = None,
+        search: str | None = None,
         category_id: int | None = None,
         min_price: float | None = None,
         max_price: float | None = None,
@@ -99,8 +99,8 @@ class ProductService:
             product_id
         )
 
-        update_data = product_data.model_config(
-            exclude_unset = True
+        update_data = product_data.model_dump(
+            exclude_unset=True
         )
 
         for field, value in update_data.items():
@@ -128,3 +128,20 @@ class ProductService:
         )
 
 product_service = ProductService()
+
+
+class CategoryService:
+
+    def create_category(
+        self,
+        db: Session,
+        category_data: CategoryCreate
+    ):
+
+        return category_repository.create(
+            db,
+            category_data
+        )
+
+category_service = CategoryService()
+    

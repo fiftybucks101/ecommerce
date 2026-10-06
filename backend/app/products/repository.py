@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.products.models import Product
-from app.products.schemas import ProductCreate
+from app.products.models import Product, Category
+from app.products.schemas import ProductCreate, CategoryCreate
 
 class ProductRepository:
 
@@ -61,5 +61,44 @@ class ProductRepository:
 product_repository = ProductRepository()
 
     
+class CategoryRepository:
 
+    def create(
+        self,
+        db: Session,
+        category_data: CategoryCreate
+    ) -> Category:
+
+        category = Category(
+            **category_data.model_dump()
+        )
+
+        db.add(category)
+        db.commit()
+        db.refresh(category)
+
+        return category
+
+    def get_by_id(
+        self,
+        db:Session,
+        category_id: int
+    ) -> Category | None:
+
+        statement = select(Category).where(
+            Category.id == category_id
+        )
+
+        return db.scalar(statement)
+
+    def delete(
+        self,
+        db: Session,
+        category: Category
+    ) -> None:
+    
+        db.delete(category)
+        db.commit()
+
+category_repository = CategoryRepository()
 
