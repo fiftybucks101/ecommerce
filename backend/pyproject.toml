@@ -9,7 +9,9 @@ dependencies = [
     "email-validator>=2.3.0",
     "fastapi>=0.141.1",
     "psycopg2-binary>=2.9.13",
+    "pwdlib[argon2]>=0.3.1",
     "pydantic-settings>=2.15.0",
+    "pyjwt>=2.15.1",
     "uvicorn>=0.53.0",
 ]
 
