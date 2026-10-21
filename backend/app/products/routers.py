@@ -10,6 +10,8 @@ from app.products.schemas import (
     CategoryResponse
 )
 from app.products.service import product_service, category_service
+from app.auth.dependencies import require_admin
+from app.users.models import User
 
 
 router = APIRouter(
@@ -20,7 +22,8 @@ router = APIRouter(
 @router.post(
     "",
     response_model=ProductResponse,
-    status_code=status.HTTP_201_CREATED
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_admin)]
 )
 def create_product(
     product_data: ProductCreate,
@@ -96,7 +99,9 @@ def get_product(
 
 @router.put(
     "/{product_id}",
-    response_model=ProductResponse
+    response_model=ProductResponse,
+    dependencies=[Depends(require_admin)]
+
 )
 def update_product(
     product_id: int,
@@ -112,7 +117,8 @@ def update_product(
 
 @router.delete(
     "/{product_id}",
-    status_code=status.HTTP_204_NO_CONTENT
+    status_code=status.HTTP_204_NO_CONTENT,
+    dependencies=[Depends(require_admin)]
 )
 def delete_product(
     product_id: int,
@@ -129,7 +135,8 @@ def delete_product(
 @router.post(
     "/create_category",
     response_model=CategoryResponse,
-    status_code=status.HTTP_201_CREATED
+    status_code=status.HTTP_201_CREATED,
+    dependencies=[Depends(require_admin)]
 )
 def create_category(
     category_data: CategoryCreate,

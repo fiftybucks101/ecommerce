@@ -60,3 +60,7 @@ pnpm-debug.log*
 # Operating System
 .DS_Store
 Thumbs.db
+
+ecommerce_dump.sql
+ecommerce_dump.sql:Zone.Identifier
+

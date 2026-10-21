@@ -31,7 +31,7 @@ class UserService:
             name=user_data.name,
             email=user_data.email,
             password_hash=user_data.password,
-            role=user_data.role,
+            role="customer",
         )
 
         try:
