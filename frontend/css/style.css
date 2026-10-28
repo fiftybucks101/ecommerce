@@ -165,12 +165,24 @@ button {
 .nav-user {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1.25rem;
+}
+
+.nav-auth-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .user-info {
-    font-size: 0.85rem;
-    color: var(--text-muted);
+    font-size: 0.9rem;
+    color: var(--text-body);
+    font-weight: 500;
+    margin-right: 0.75rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
 }
 
 /* 5. Hero Banner */
@@ -373,6 +385,7 @@ button {
     margin: 0.25rem 0 0.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

@@ -8,4 +8,5 @@ python3 -m http.server 5500
 sudo -u postgres psql -d ecommerce
 
 view tables: \dt
+
 view table schema: \d table_name

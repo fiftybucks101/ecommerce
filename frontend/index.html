@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore featured electronics, clothing, and products in our online store.">
     <title>E-Commerce Store</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -17,13 +18,23 @@
 
         <nav class="nav-links">
             <a href="#" class="nav-link active">Products</a>
-            <a href="#" class="nav-link admin-pill">Admin</a>
+            <a href="#" id="adminNavLink" class="nav-link admin-pill" style="display: none;">Admin</a>
         </nav>
 
         <div class="nav-user">
-            <span class="user-info">👤 Welcome, User!</span>
+            <!-- Guest Section (Default) -->
+            <div id="navGuest" class="nav-auth-group">
+                <a href="pages/login.html" id="loginNavBtn" class="btn btn-outline">Login</a>
+                <a href="pages/register.html" id="registerNavBtn" class="btn btn-primary">Sign Up</a>
+            </div>
+
+            <!-- Authenticated Section (Hidden by Default) -->
+            <div id="navAuth" class="nav-auth-group" style="display: none;">
+                <span id="userGreeting" class="user-info">👤 Welcome, User!</span>
+                <button id="logoutBtn" class="btn btn-outline">Logout</button>
+            </div>
+
             <button id="cartBtn" class="btn btn-outline">Cart (0)</button>
-            <button id="loginBtn" class="btn btn-outline">Login</button>
         </div>
     </header>
 
@@ -117,7 +128,8 @@
         <p class="copyright">Copyright &copy; E-Commerce Store</p>
     </footer>
 
-    <!-- Frontend Logic -->
-    <script src="js/app.js?v=2"></script>
+    <!-- Authentication & Frontend Logic -->
+    <script src="js/auth.js?v=5"></script>
+    <script src="js/app.js?v=5"></script>
 </body>
 </html>
