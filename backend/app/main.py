@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.products.routers import router as product_router
 from app.users.routers import router as user_router
 from app.auth.routers import router as auth_router
+from app.cart.routers import router as cart_router
 
 app = FastAPI(
     title="E-Commerce API",
@@ -33,3 +34,4 @@ def health_check():
 app.include_router(product_router)
 app.include_router(user_router)
 app.include_router(auth_router)
+app.include_router(cart_router)

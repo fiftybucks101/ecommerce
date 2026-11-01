@@ -8,7 +8,7 @@ Associated source files:
 - Service: `app/products/service.py`
 - Repository: `app/products/repository.py`
 - Schemas: `app/products/schemas.py`
-- Model: `app/products/models.py`
+- Models: `app/products/models.py`
 
 ---
 
@@ -47,6 +47,43 @@ All fields are optional. Only sent fields are updated.
 | `image_url` | string \| null | Image URL |
 | `created_at` | datetime | Timestamp created (UTC) |
 | `updated_at` | datetime | Timestamp last updated (UTC) |
+
+---
+
+## Models
+
+### Product
+Mapped to table `products`. Represents catalog items in the database.
+
+| Field | Type | Nullable | Constraints | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | integer (`Integer`) | No | Primary Key, Indexed | Unique product identifier |
+| `name` | string (`String(200)`) | No | Indexed | Name of the product |
+| `description` | string (`Text`) | Yes | null by default | Detailed description of the product |
+| `price` | number (`Numeric(10, 2)`) | No | Precision 10, scale 2 | Unit price |
+| `stock` | integer (`Integer`) | No | Default `0` | Available inventory count |
+| `category_id` | integer (`Integer`) | No | Foreign Key (`categories.id`) | Reference to associated category |
+| `image_url` | string (`String(500)`) | Yes | null by default, max 500 chars | URL link to product image |
+| `created_at` | datetime (`DateTime`) | No | Default `datetime.utcnow` | Timestamp created (UTC) |
+| `updated_at` | datetime (`DateTime`) | No | Default `datetime.utcnow`, auto-updated | Timestamp last updated (UTC) |
+
+#### Relationships
+| Field | Type | Cardinality | Back-populates | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `category` | `Category` | Many-to-One | `products` | Associated category entity |
+
+### Category
+Mapped to table `categories`. Associated classification model defined in `app/products/models.py`.
+
+| Field | Type | Nullable | Constraints | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `id` | integer (`Integer`) | No | Primary Key, Indexed | Unique category identifier |
+| `name` | string (`String(100)`) | No | Unique, max 100 characters | Name of the category |
+
+#### Relationships
+| Field | Type | Cardinality | Back-populates | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `products` | `list[Product]` | One-to-Many | `category` | List of products belonging to this category |
 
 ---
 
